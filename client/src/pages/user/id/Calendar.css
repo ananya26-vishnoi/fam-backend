@@ -1,0 +1,277 @@
+.calendar-content {
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: var(--treeway-sizing);
+    grid-template-areas: 'calendar schedule plan';
+    column-gap: var(--spacing-inline);
+    background-color: #dfdfdf;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+}
+
+.calendar-card {
+    display: grid;
+    place-items: center;
+    gap: 3em;
+}
+
+.calendar-content>.calendar {
+    grid-area: calendar;
+    position: fixed;
+    width: var(--logo-space);
+    min-width: 240px;
+    height: 100%;
+    background-color: hsl(var(--clr-bright-base));
+    box-shadow: .2rem 0 var(--shadow-10);
+    color: hsl(var(--clr-dark-accent));
+    font-size: 1.2rem;
+    padding: var(--padding-block-start) var(--padding-block-start) var(--spacing-block);
+    display: grid;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.calendar-content>.schedule {
+    grid-area: schedule;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    padding: var(--spacing-block) 0 0;
+}
+
+.calendar-content>.plan {
+    grid-area: plan;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    padding: var(--spacing-block) 0 0;
+}
+
+.plan>.plan-event {
+    display: grid;
+    background-color: hsl(var(--clr-bright-base));
+    height: 90%;
+    border-radius: 1.5em;
+    overflow: hidden;
+    margin-top: 2em;
+    margin-right: 2em;
+    padding: 2em;
+}
+.plan-image {
+    width: 100%;
+    border-radius: 1em;
+}
+.plan-details{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.plan-title{
+    color: hsl(var(--clr-bright-accent-shade));
+    font-weight: 700;
+    margin-block: 1em;
+}
+.participants-title {
+    font-weight: 600;
+    margin:1em 0 0;
+}
+.participants {
+    display: flex;
+    margin: .5em 0 1em;
+}
+.participant {
+    width: 2.5em;
+    border-radius: 2.5em;
+    background-color: #dfdfdf;
+}
+.plan-note {
+    width: 100%;
+    padding: .5em;
+    font-size: 1em;
+    border: 2px solid #dfdfdf;
+    border-radius: 1em;
+    height: 100%;
+}
+
+.schedule-button>button {
+    border: 0;
+    width: fit-content;
+    float: right;
+    font-size: 1em;
+    font-weight: 600;
+}
+.schedule-button{
+    height: 2em;
+}
+.schedule-card {
+    display: grid;
+    /* grid-template-rows: 1fr 7fr; */
+    /* grid-template-areas: 'date time_period'; */
+    background-color: hsl(var(--clr-dark-accent));
+    height: 90%;
+    border-radius: 1.5em;
+    overflow: hidden;
+}
+.schedule-card>.date {
+    /* grid-area: date; */
+    justify-content: space-between;
+    display: flex;
+    font-size: 1.5em;
+    padding: 0 .5em;
+    align-items: center;
+    align-content: center;
+    color: hsl(var(--clr-bright-base));
+}
+.schedule-card>.date>button {
+    border: 0;
+    color: hsl(var(--clr-bright-base));
+    font-size: 1.5em;
+}
+.schedule-card>.time-period {
+    /* grid-area: time_period; */
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(var(--clr-bright-base));
+    height: 100%;
+    overflow-y: auto;
+    border-radius: 0 0 1.5em 1.5em;
+}
+.time-period>.hr-card {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    border: 2;
+    color: hsl(var(--clr-dark-accent));
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: 'one_hr  daily_plan';
+}
+.hr-card>.one-hr {
+    text-align: center;
+    grid-area: one_hr;
+    border: 1px solid #dfdfdf;
+    padding: 1.5em 0;
+    font-weight: 600;
+}
+.hr-card>.daily-plan {
+    grid-area: daily_plan;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'first  second'; */
+}
+.first,
+.second {
+    /* grid-area: first; */
+    width: 100%;
+    height: 50%;
+    /* background-color: bisque; */
+    border: 1px solid #dfdfdf;
+}
+
+.newevent {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: fit-content;
+    border: 0;
+    gap:1em;
+}
+.newevent>.addbutton {
+    border-radius: .25em;
+    background-color: rgb(255, 80, 49);
+    color: hsl(var(--clr-bright-base));
+    padding: .20em .5em;
+    font-size: 2em;
+    font-weight: 700;
+}
+.newevent>.addbutton_text {
+    font-size: 1.2em;
+}
+.calendar-card>.calendar-name{
+    border: 0;
+    font-weight: 600;
+    color: hsl(var(--clr-dark-accent));
+}
+.react-calendar__navigation {
+    display: flex;
+    height: 2.5em;
+    border-radius: 1.5em 1.5em 0 0;
+    background-color: hsl(var(--clr-dark-accent));
+}
+.react-calendar__navigation__arrow {
+    flex-grow: 0.333;
+    border:0;
+    font-size: 1.2em;
+    color: hsl(var(--clr-bright-base));
+}
+.react-calendar__navigation__label {
+    /* font-weight: bold; */
+    font-size: larger;
+    color: hsl(var(--clr-bright-base));
+    border:0;
+}
+.react-calendar__month-view__weekdays__weekday>abbr {
+    text-decoration: none;
+}
+.react-calendar__month-view__weekdays__weekday--weekend {
+    background-color: rgb(255, 80, 49);
+    color: hsl(var(--clr-dark-accent)) !important;
+    font-weight: bold;
+}
+.react-calendar__month-view__weekdays__weekday {    
+    padding:1em .5em;
+}
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .75rem;
+    background-color: hsla(var(--clr-dark-accent),.75);
+    color: hsl(var(--clr-bright-base));
+    /* border: 1px;
+    border-color: #dfdfdf; */
+}
+.react-calendar__tile {
+    font-weight:600;
+    margin:0;
+    border: 0;
+    border-radius: 1.5em;
+    color: hsl(var(--clr-dark-accent));
+    font-size: 1.2em;
+    text-align: center;
+    align-content: center;
+    padding: .3em .3em;
+    width: 100%;
+    height: 100%;
+
+}
+.react-calendar__month-view__days {
+    display: grid !important;
+    background-color: #dfdfdf;
+    grid-template-columns: 14.3% 14.3% 14.3% 14.2% 14.3% 14.3% 14.3%;
+    border-radius:0 0 1.5em 1.5em;
+    justify-items: center;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+    font-size: .85em !important;
+}
+.react-calendar__tile--now {
+    background-color: hsl(var(--clr-bright-base));
+}
+.react-calendar__tile--active,
+.react-calendar__tile--hasActive {
+    background-color: hsla(var(--clr-dark-accent),.75);
+    color: hsl(var(--clr-bright-base)) !important;
+}
+.react-calendar__viewContainer {
+    background-color: #dfdfdf;
+    border-radius: 0 0 1.5em 1.5em;
+}

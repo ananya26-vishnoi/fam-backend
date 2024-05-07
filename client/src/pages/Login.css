@@ -1,0 +1,8 @@
+.content {
+    min-height: 85vh;
+}
+
+.login {
+    padding-inline: 1rem;
+    height: 100%;
+}

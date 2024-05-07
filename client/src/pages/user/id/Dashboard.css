@@ -1,0 +1,270 @@
+:root {
+    --transition-in-smooth: 150ms cubic-bezier(0.5, 0.1, 0.1, 1) 25ms;
+    --transition-out-smooth: 350ms ease 75ms;
+    --transition-in-aggressive: 100ms cubic-bezier(0.7, 0.1, 0.9, 0.1) 25ms;
+    --transition-out-aggressive: 100ms ease-out 75ms;
+
+    --padding-block-start: .65rem;
+    --padding-block-end: .75rem;
+    --spacing-block: max(4rem, 10vh);
+    --padding-inline: max(1rem, 5vw);
+    --spacing-inline: max(1rem, 3vw);
+    --navigation-spacing: calc(var(--spacing-inline) * 0.35);
+    --user-spacing: calc(var(--spacing-inline) * 0.25);
+    --navigation-height: 1.85rem;
+    --user-height: 1rem;
+    --logo-fontsize: 1.5rem;
+    --logo-height: 2;
+    --logo-space: calc(var(--padding-inline) * 2 + var(--logo-fontsize) * var(--logo-height) / 11 * 45);
+    --navigation-space: calc(var(--navigation-height) * 4 + var(--navigation-spacing) * 3);
+    --user-space: calc(var(--user-height) * 3.9 + var(--user-spacing) * 2);
+
+    --navigation-sizing: var(--logo-space) 1fr var(--navigation-space) var(--user-space);
+    --treeway-sizing: var(--logo-space) 1fr calc(var(--navigation-space) + var(--spacing-inline) + var(--user-space) + var(--padding-inline));
+
+
+    --shadow-01: .45rem -.15rem hsla(var(--clr-dark-base), .65);
+    --shadow-1: .75rem -.075rem hsla(var(--clr-dark-base), .9);
+    --shadow-10: 1.2rem -.15rem hsla(var(--clr-dark-base), .95);
+
+
+    @media (min-width: 110rem) {
+        --padding-inline: 6vw;
+        --spacing-inline: 5vw;
+    }
+}
+
+.dashboard {
+    height: 100%;
+}
+
+.app-element.body {
+    overflow: hidden;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+
+
+/*    Scrollbar element    */
+
+
+/* Firefox */
+body:has(.app-element),
+*.app-element {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(0, 0%, 50%) hsl(0, 0%, 65%);
+}
+
+.app-element.pannel-title {
+    /* Add your desired styles here */
+    width: 300px;
+    /* Set width as needed */
+    height: 65px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    outline: none;
+    /* Additional styling based on your requirements */
+}
+
+/* Styling placeholder text */
+.app-element.pannel-title::placeholder {
+    color: rgb(0, 18, 81);
+    /* Placeholder text color */
+    /* Additional styles for placeholder text */
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    /* Define your button-specific styles here */
+    /* For example: */
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Chrome, Edge and Safari */
+body:has(.app-element)::-webkit-scrollbar,
+*.app-element::-webkit-scrollbar {
+    width: 6px;
+    background-color: hsl(var(--clr-dark-accent));
+}
+
+body:has(.app-element)::-webkit-scrollbar-track,
+*.app-element::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body:has(.app-element)::-webkit-scrollbar-track:hover,
+*.app-element::-webkit-scrollbar-track:hover {
+    background-color: hsla(var(--clr-bright-shade), .15);
+}
+
+body:has(.app-element)::-webkit-scrollbar-track:active,
+*.app-element::-webkit-scrollbar-track:active {
+    background-color: hsla(var(--clr-bright-shade), .15);
+}
+
+body:has(.app-element)::-webkit-scrollbar-thumb,
+*.app-element::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: hsla(var(--clr-bright-shade), .2);
+}
+
+body:has(.app-element)::-webkit-scrollbar-thumb:hover,
+*.app-element::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(var(--clr-bright-shade), .3);
+}
+
+body:has(.app-element)::-webkit-scrollbar-thumb:active,
+*.app-element::-webkit-scrollbar-thumb:active {
+    background-color: hsla(var(--clr-bright-shade), .45);
+}
+
+.app-element.invisible-scrollbar {
+    scrollbar-width: none;
+}
+
+.app-element.invisible-scrollbar::-webkit-scrollbar {
+    width: 0;
+}
+
+
+
+
+/*    Dropdown element    */
+
+
+.app-element.dropdown {
+    --border-radius: .75em;
+    position: relative;
+    border-radius: var(--border-radius);
+    border: none;
+    color: hsl(var(--clr-bright-shade));
+    font-size: var(--fs-001);
+    padding: .5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-element.dropdown:has(.list:not(:hover))>.bx,
+.app-element.dropdown:has(.list:not(:hover))>.bx {
+    transition: opacity var(--transition-out-smooth);
+}
+
+.app-element.dropdown:has(.list:not(:hover)):hover>.bx,
+.app-element.dropdown:has(.list:not(:hover)):focus-visible>.bx {
+    transition: opacity var(--transition-in-smooth);
+    opacity: .5;
+}
+
+.app-element.dropdown:hover,
+.app-element.dropdown:focus {
+    cursor: pointer;
+    outline: none;
+}
+
+.app-element.dropdown:has(.list:not(.hidden))>.bx {
+    transition: transform var(--transition-in-aggressive);
+    transform: rotateX(180deg);
+}
+
+.app-element.dropdown:active {
+    scale: unset;
+}
+
+.app-element.dropdown button:active {
+    scale: unset;
+}
+
+.app-element.dropdown>.list {
+    position: absolute;
+    top: 175%;
+    z-index: 9;
+    width: max-content;
+    box-shadow: 0 0 var(--shadow-1);
+    border-radius: var(--border-radius);
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-dark-base));
+    cursor: default;
+    padding: .5em;
+    display: grid;
+    align-items: center;
+}
+
+.app-element.dropdown>.list.hidden,
+.app-element.dropdown>.list.hidden>.element {
+    display: none;
+}
+
+.app-element.dropdown>.bx {
+    font-size: 1em;
+    transition: transform var(--transition-out-aggressive);
+}
+
+.app-element.dropdown>.list>.element {
+    border: none;
+    height: unset;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: opacity var(--transition-out-smooth);
+}
+
+.app-element.dropdown>.list>.element:hover {
+    cursor: pointer;
+}
+
+.app-element.dropdown>.list>.element:first-child {
+    border-top: none;
+}
+
+.app-element.dropdown>.list>.element:hover,
+.app-element.dropdown>.list>.element:focus-visible {
+    transition: opacity var(--transition-in-smooth);
+    opacity: .5;
+}
+
+
+
+
+.app-element.user-activity {
+    aspect-ratio: 1/1;
+    height: .75em;
+    border-radius: 50%;
+    background-color: hsl(var(--clr-bright-shade));
+}
+
+.app-element.user-activity[status="active"] {
+    background-color: #0e1;
+}
+
+.app-element.user-activity[status="idle"] {
+    background-color: #fd5;
+}
+
+.app-element.user-activity[status="doNotDisturb"] {
+    background-color: #f00;
+}
+
+
+
+
+.app-element.profile-picture {
+    border-radius: 12.5%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    background-color: #aaa;
+}
+
+.app-element.default-profile-picture {
+    padding: 7.5%;
+}

@@ -1,0 +1,362 @@
+/* html,
+body,
+.body,
+.invisible-scrollbar {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+} */
+
+
+.Inbox_content {
+    background-color: hsl(var(--clr-dark-accent));
+    display: grid;
+    grid-template-columns: var(--treeway-sizing);
+    grid-template-areas: 'users inbox user';
+    column-gap: var(--spacing-inline);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.Inbox_content::before,
+.Inbox_content::after {
+    content: '';
+    position: fixed;
+    grid-row: span 3;
+    bottom: 0;
+    z-index: 0;
+    height: 85%;
+    width: min(25rem, 30vw);
+    background-image: url("/public/family.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .6;
+    filter: brightness(.6);
+}
+
+.Inbox_content::before {
+    left: 0;
+    background-position-x: right;
+}
+
+.Inbox_content::after {
+    right: 0;
+    background-position-x: left;
+}
+
+
+.Inbox_content>#users {
+    grid-area: users;
+    position: absolute;
+    top: calc(3rem + 5%);
+    /* bottom: 0; */
+    left: 0;
+    z-index: 4;
+    max-width: var(--logo-space);
+    max-height: calc(80% - 5rem);
+    height: fit-content;
+    box-shadow: 0 0 var(--shadow-1);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: hsl(var(--clr-bright-base));
+    padding: 0 0 1.5rem 1.5rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.Inbox_content>#users>.toggle {
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    margin-left: auto;
+    margin-bottom: 1em;
+    border-bottom-left-radius: 1rem;
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-dark-accent));
+    padding: 1em;
+}
+
+.Inbox_content>#users>.toggle:hover {
+    cursor: default;
+}
+
+.Inbox_content>#users>.toggle>i:hover {
+    cursor: pointer;
+}
+
+.Inbox_content>#users>.user {
+    position: relative;
+    margin-top: 1.25rem;
+    margin-right: 2.35rem;
+    font-size: .9em;
+    font-weight: 500;
+    padding: .1rem .85em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Inbox_content>#users>.user:first-child {
+    margin-top: 0;
+}
+
+.Inbox_content>#users>.user>.profile-picture {
+    box-shadow: inset 0 0 var(--shadow-01);
+    border-radius: 50%;
+    height: 3.5em;
+    padding: .35em;
+}
+
+.Inbox_content>#users>.user>.name {
+    text-transform: capitalize;
+    margin-left: 1em;
+}
+
+.Inbox_content>#users>.user>.user-activity {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Inbox_content>.center {
+    /* position: sticky; */
+    grid-area: inbox;
+    z-index: 4;
+    width: 100%;
+    padding-block: var(--spacing-block);
+    display: grid;
+    /* grid-template-rows: auto 1fr; */
+    gap: 2rem;
+    overflow-y: auto;
+}
+
+.Inbox_content>.center>.links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.Inbox_content>.center>.links>.link {
+    box-shadow: 0 0 var(--shadow-01);
+    border-radius: .3em;
+    border: .075em solid hsl(var(--clr-bright-accent));
+    background-color: hsl(var(--clr-bright-accent));
+    color: hsl(var(--clr-bright-base));
+    font-size: 3rem;
+    padding: .2em .5em;
+    transition: background-color var(--transition-out-smooth),
+        color var(--transition-out-smooth);
+}
+
+.Inbox_content>.center>.links>.link:hover,
+.Inbox_content>.center>.links>.link:focus-visible {
+    transition: background-color var(--transition-in-smooth),
+        color var(--transition-in-smooth);
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-bright-accent));
+}
+
+.Inbox_content>.center>#inbox {
+    display: grid;
+    align-content: flex-start;
+    gap: 1.5rem;
+}
+
+.Inbox_content>.center>#inbox>.message {
+    box-shadow: 0 0 var(--shadow-01);
+    border-radius: 1em;
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-ground));
+    padding: 1.5em;
+}
+
+.Inbox_content>.center>#inbox>.message>.info {
+    margin-bottom: .75em;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    gap: .75em;
+}
+
+.Inbox_content>.center>#inbox>.message>.info>.profile-picture {
+    height: 2.5em;
+    padding: .2em;
+}
+
+.Inbox_content>.center>#inbox>.message>.info>.author {
+    width: fit-content;
+    color: hsl(var(--clr-bright-accent));
+    font-size: 1.35em;
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+.Inbox_content>#selected-user {
+    grid-area: user;
+    position: absolute;
+    top: calc(3rem + 5%);
+    /* bottom: 0; */
+    right: 0;
+    z-index: 4;
+    max-width: calc(var(--navigation-space) + var(--spacing-inline) + var(--user-space) + var(--padding-inline));
+    max-height: calc(90% - 5rem);
+    width: min-content;
+    height: fit-content;
+    box-shadow: 0 0 var(--shadow-1);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-dark-accent));
+    font-size: 1.2rem;
+    padding: 0 1.25rem 1.25rem 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        'toggle .'
+        '.. info';
+    overflow: hidden scroll;
+    gap: .05rem;
+}
+
+.Inbox_content>#selected-user>.toggle {
+    grid-area: toggle;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-bottom-right-radius: 1rem;
+    background-color: hsl(var(--clr-bright-base));
+    color: hsl(var(--clr-dark-accent));
+    padding: 1em;
+}
+
+.Inbox_content>#selected-user>.user-info {
+    grid-area: info;
+    font-size: 1em;
+    padding: 1rem;
+    padding-top: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.Inbox_content>#selected-user>.user-info>.profile-picture {
+    min-width: 10em;
+    width: 100%;
+    border-radius: .75rem;
+}
+
+.Inbox_content>#selected-user>.user-info>.name {
+    color: hsl(var(--clr-bright-accent));
+    font-size: 1.25em;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.Inbox_content>#selected-user>.user-info>.social {
+    width: fit-content;
+    color: hsl(var(--clr-bright-accent));
+    font-size: 1.5em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: .25rem;
+}
+
+.Inbox_content>#selected-user>.user-info>.social .bx {
+    font-size: 1.2em;
+}
+
+.Inbox_content>#selected-user>.user-info>.people {
+    margin-right: auto;
+    font-size: 1.3em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.Inbox_content>#selected-user>.user-info>.people>.bx {
+    margin-right: 0;
+}
+
+.Inbox_content>#selected-user>.user-info>.info>.info {
+    width: max-content;
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.Inbox_content>#selected-user>.user-info>.info>.info>.tag {
+    font-weight: 600;
+}
+
+.Inbox_content>#selected-user>.user-info>.quote {
+    font-size: .9em;
+    font-weight: 600;
+}
+
+
+.Inbox_content>.pannel>.toggle {
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+.Inbox_content>.pannel>.toggle:hover {
+    cursor: pointer;
+}
+
+.Inbox_content>.pannel>.toggle>.bx {
+    /* transition: transform var(--transition-out-smooth); */
+}
+
+.Inbox_content>.pannel:has(.shown)>.toggle>.bx {
+    /* transition: transform var(--transition-in-smooth); */
+    transform: rotateY(180deg);
+}
+
+.Inbox_content>.pannel#users .hidden {
+    display: none;
+}
+
+.Inbox_content>.pannel#selected-user .hidden:not(.user-info, .profile-picture) {
+    display: none;
+}
+
+.Inbox_content>.pannel#selected-user:has(.hidden) {
+    border-top-left-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+    padding: .75rem;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'toggle info';
+    align-items: center;
+    gap: .5rem;
+}
+
+.Inbox_content>.pannel#selected-user:has(.hidden)>.toggle {
+    padding: .25em;
+}
+
+.Inbox_content>.pannel#selected-user>.user-info.hidden {
+    padding: 0;
+}
+
+.Inbox_content>.pannel#selected-user>.user-info>.profile-picture.hidden {
+    min-width: unset;
+    width: unset;
+    height: 2em;
+    border-radius: 20%;
+}

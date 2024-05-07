@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root {
+    --clr-dark-base: 0, 0%, 0%;
+    --clr-dark-shade: 0, 0%, 25%;
+    --clr-dark-accent: 225, 50%, 25%;
+    --clr-dark-accent-shade: 225, 30%, 35%;
+    --clr-dark-mistake: 0, 100%, 40%;
+    --clr-dark-success: 110, 100%, 25%;
+
+    --clr-ground: 0, 0%, 65%;
+
+    --clr-bright-base: 0, 0%, 100%;
+    --clr-bright-shade: 0, 0%, 80%;
+    --clr-bright-accent: 20, 100%, 50%;
+    --clr-bright-accent-shade: 20, 95%, 65%;
+    --clr-bright-mistake: 350, 100%, 60%;
+    --clr-bright-success: 110, 100%, 70%;
+
+
+    --fs: min(1rem, max(.7rem, 1.25vw));
+    --fs-100: calc(var(--fs) * 2.2);
+    --fs-10: calc(var(--fs) * 1.35);
+    --fs-1: calc(var(--fs) * 1);
+    --fs-01: calc(var(--fs) * .9);
+    --fs-001: calc(var(--fs) * .85);
+
+
+    font-size: var(--fs);
+}
+
+.application {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ol,
+ul,
+dl,
+li {
+    list-style: none;
+}
+
+iframe {
+    border: none;
+}
+
+input,
+button,
+textarea {
+    appearance: none;
+    background-color: unset;
+    box-shadow: none;
+    font-size: 1rem;
+    padding: .2em;
+}
+
+button:active {
+    scale: .975;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: hsl(0, 0%, 60%);
+    font-weight: lighter;
+    font-style: italic;
+}
+
+
+.dark-accent-text {
+    color: hsl(var(--clr-dark-accent));
+}
+
+.bright-accent-text {
+    color: hsl(var(--clr-bright-accent));
+}
+
+
+.quote::before,
+.quote::after {
+    background: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    --spacing: .25ch;
+}
+
+.quote::before {
+    content: open-quote;
+    margin-right: var(--spacing);
+}
+
+.quote::after {
+    content: close-quote;
+    margin-left: var(--spacing);
+}
+
+
+.symbol,
+.bx {
+    aspect-ratio: 1/1;
+    height: 1em;
+    color: inherit;
+    font-size: 1em;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+.icon-text-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.icon-text-wrapper>.bx {
+    font-size: 1.5em;
+    margin-right: .25ch;
+}
+
+.invisible-scrollbar {
+    scrollbar-width: none !important;
+}
+
+/* *:has(> .bx) {
+  background-color: #f8da !important;
+}
+.bx {
+  background-color: #8dfa !important;
+}
+.bx::before {
+  background-color: #df8a !important;
+} */

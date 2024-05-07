@@ -1,0 +1,11 @@
+.otp {
+  padding-inline: 5vw;
+  padding-bottom: 0%;
+}
+.otp-container button {
+    background-color: hsl(var(--clr-bright-accent)) !important;
+  }
+
+  button:hover {
+    background-color: rgb(255, 132, 70) !important;
+  }

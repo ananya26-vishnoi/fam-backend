@@ -1,0 +1,44 @@
+@media (min-height: 175vw) {
+    .content>section:not(#landing) {
+        min-height: unset;
+    }
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem max(1rem, 3vw);
+}
+
+.options>.option {
+    padding: 2rem 1em;
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+}
+
+.options>.option>.option-title {
+    justify-self: flex-start;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.options>.option>.buttons {
+    width: fit-content;
+    display: flex;
+    flex-flow: wrap;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.options>.option>.buttons>.download-link {
+    background-color: hsl(var(--clr-bright-accent));
+}
+
+.options>.option>.buttons>.more-link {
+    background-color: hsl(var(--clr-dark-accent));
+}

@@ -1,0 +1,107 @@
+.content {
+    position: relative;
+}
+
+.Index_content {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content>#sidebar {
+    position: absolute;
+    top: 5rem;
+    left: -2em;
+    box-shadow: .2rem .2rem var(--shadow-1);
+    border-top-right-radius: .85rem;
+    border-bottom-right-radius: .85rem;
+    background-color: hsl(var(--clr-bright-base));
+    font-size: .85rem;
+    padding: 2em 3.5em;
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+}
+
+.content>#sidebar>.link {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-out-smooth);
+}
+
+.content>#sidebar>.link:hover,
+.content>#sidebar>.link:focus-visible {
+    transition: color var(--transition-in-smooth);
+    color: hsl(var(--clr-bright-accent));
+}
+
+
+.familytree {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.familytree>.member {
+    border-radius: 1em;
+    width: fit-content;
+    height: fit-content;
+    background-color: hsl(var(--clr-dark-accent-shade));
+    color: hsl(var(--clr-bright-base));
+    font-size: .8rem;
+    padding: 1em;
+    padding-right: 2em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        'picture name'
+        'picture title'
+        'picture birth'
+        'picture location'
+        'picture status';
+    gap: 0 1em;
+}
+
+.familytree>.member>.profile-picture {
+    grid-area: picture;
+    max-height: 7em;
+    border-radius: .75em;
+}
+
+.familytree>.member>.name {
+    grid-area: name;
+    color: hsl(var(--clr-bright-accent));
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.familytree>.member>.title {
+    grid-area: title;
+    margin-block: .6em;
+    color: hsl(var(--clr-bright-accent));
+    font-size: .9em;
+}
+
+.familytree>.member>.birth {
+    grid-area: birth;
+}
+
+.familytree>.member>.location {
+    grid-area: location;
+}
+
+.familytree>.member>.relationship-status {
+    grid-area: status;
+}
+
+.familytree>.member>.info {
+    font-size: .75em;
+    font-weight: 300;
+}
+
+.familytree>.member>.info>.tag {
+    font-weight: 500;
+}
